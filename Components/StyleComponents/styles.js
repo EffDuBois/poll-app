@@ -20,5 +20,4 @@ export default StyleSheet.create({
     alignSelf: "stretch",
     backgroundColor: "#FFFFFF",
   },
-
 });
