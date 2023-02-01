@@ -6,11 +6,11 @@ export default function MainPage() {
   return (
     <View style={styles.background}>
       <View style={styles.hero}>
-        <Text>Welcome</Text>
+        <AppText>Welcome</AppText>
       </View>
       <View style={styles.main}>
         <Pressable>
-          <Text>Complaints</Text>
+          <AppText>Complaints</AppText>
         </Pressable>
       </View>
     </View>
