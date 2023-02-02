@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "#FF893B",
+    backgroundColor: "#rgba(255, 137, 59, 1)",
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },
@@ -13,10 +13,6 @@ export default StyleSheet.create({
   },
 
   main: {
-    height: "50%",
-    borderWidth: 5,
-    borderColor: "#ffffff",
-    borderRadius: 35,
     alignSelf: "stretch",
     backgroundColor: "#FFFFFF",
   },

@@ -1,10 +1,10 @@
-import MainPage from "./Components/MainPage";
-import SafeWrap from "./Components/SafeAreaWrap";
+import HomePage from "./Components/HomePage/HomePage";
+import SafeAreaWrap from "./Components/Util/SafeAreaWrap";
 
 export default function App() {
   return (
-      <SafeWrap>
-        <MainPage/>
-      </SafeWrap>
+    <SafeAreaWrap>
+      <HomePage />
+    </SafeAreaWrap>
   );
 }
