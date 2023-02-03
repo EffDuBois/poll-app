@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import SafeAreaWrap from "./Components/Util/SafeAreaWrap";
 
-import ComplaintsPage from "./Components/Complaints/ComplaintsPage";
+import ComplaintsPage from "./Components/ComplaintsPage/ComplaintsPage";
 import HomePage from "./Components/HomePage/HomePage";
 
 const Stack = createStackNavigator();
