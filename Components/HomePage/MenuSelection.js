@@ -1,45 +1,55 @@
 import { Image, StyleSheet, View } from "react-native";
-import AppText from "../Elements/AppText";
-import SelectButton from "../Elements/SelectButton";
+import AppText from "../Util/AppText";
+import MenuButton from "../Util/MenuButton";
+import GlobalStyles from "../StyleComponents/GlobalStyles";
 
 export default function MenuSelection() {
   return (
     <View>
-      <AppText style={styles.text}>Choose Option</AppText>
+      <AppText style={GlobalStyles.headerText}>Choose Option</AppText>
       <View style={[styles.subMenu]}>
-        <SelectButton
+        <MenuButton
           buttonName={"Complaints"}
           color={"#rgba(3, 173, 173, 0.3)"}
+          screen={"ComplaintsPage"}
         >
           <Image
             source={require("../../assets/Choice-option/complaints.png")}
             style={styles.Icon}
             resizeMode="cover"
           />
-        </SelectButton>
-        <SelectButton buttonName={"Events"} color={"#rgba(255, 209, 1, 0.3)"}>
+        </MenuButton>
+        <MenuButton
+          buttonName={"Events"}
+          color={"#rgba(255, 209, 1, 0.3)"}
+          screen={"EventsPage"}
+        >
           <Image
             source={require("../../assets/Choice-option/events.png")}
             style={styles.Icon}
             resizeMode="cover"
           />
-        </SelectButton>
+        </MenuButton>
       </View>
       <View style={[styles.subMenu]}>
-        <SelectButton buttonName={"Polls"} color={"#rgba(237, 69, 69, 0.3)"}>
+        <MenuButton
+          buttonName={"Polls"}
+          color={"#rgba(237, 69, 69, 0.3)"}
+          screen={"PollsPage"}
+        >
           <Image
             source={require("../../assets/Choice-option/poll.png")}
             style={styles.Icon}
             resizeMode="stretch"
           />
-        </SelectButton>
-        <SelectButton buttonName={"Exit"} color={"#rgba(37, 211, 102, 0.51)"}>
+        </MenuButton>
+        <MenuButton buttonName={"Exit"} color={"#rgba(37, 211, 102, 0.51)"}>
           <Image
             source={require("../../assets/Choice-option/exit.png")}
             style={styles.Icon}
             resizeMode="stretch"
           />
-        </SelectButton>
+        </MenuButton>
       </View>
     </View>
   );
@@ -53,10 +63,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-  },
-
-  text: {
-    margin: "5%",
   },
 
   Icon: {

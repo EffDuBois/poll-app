@@ -1,12 +1,12 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, View } from "react-native";
 import MenuSelection from "./MenuSelection";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
-import Hero from "./Hero";
+import Hero from "../Util/Hero";
 
 export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
-      <Hero/>
+      <Hero style={[styles.heroText]}>Welcome,</Hero>
       <View style={[GlobalStyles.main, styles.main]}>
         <MenuSelection />
       </View>
@@ -21,4 +21,8 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 35,
     borderTopEndRadius: 35,
   },
+
+  heroText: {
+    marginTop: 22,
+  }
 });
