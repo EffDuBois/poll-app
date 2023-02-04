@@ -12,7 +12,7 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  main: {
+  menu: {
     alignSelf: "stretch",
     backgroundColor: "#FFFFFF",
   },

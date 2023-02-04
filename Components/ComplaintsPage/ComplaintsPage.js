@@ -22,9 +22,4 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
 
-  main: {
-    width: "82%",
-    height: "117%",
-    alignSelf: "center",
-  },
 });

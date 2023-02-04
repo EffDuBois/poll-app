@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
       <Hero style={[styles.heroText]}>Welcome,</Hero>
-      <View style={[GlobalStyles.main, styles.main]}>
+      <View style={[GlobalStyles.menu, styles.menu]}>
         <MenuSelection />
       </View>
     </View>
@@ -15,7 +15,7 @@ export default function HomePage() {
 }
 
 const styles = StyleSheet.create({
-  main: {
+  menu: {
     height: "60%",
     borderColor: "#ffffff",
     borderTopStartRadius: 35,

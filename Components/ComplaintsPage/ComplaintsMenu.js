@@ -2,20 +2,32 @@ import { StyleSheet, View } from "react-native";
 import AppText from "../Util/AppText";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import ComplaintCard from "../Util/ComplaintCard";
+import { useState } from "react";
 
 export default function ComplaintsMenu() {
+
+  const [ComplaintList, setComplaintList] = useState([
+    {name: "Broken road", status: "Solved"},
+    {name: "Dirty Road", status: "Processing"},
+    {name: "Build Highway", status: "Declined"},
+  ])
+
   return (
-    <View style={[GlobalStyles.main, styles.main]}>
+    <View style={[GlobalStyles.menu, styles.menu]}>
       <AppText style={GlobalStyles.headerText}>History</AppText>
-      <ComplaintCard name={"Broken Road"} status={"Solved"} />
-      <ComplaintCard name={"Dirty Road"} status={"Processing"} />
-      <ComplaintCard name={"Broken Road"} status={"Declined"} />
+      {
+        ComplaintList.map((list) =>{
+          return(
+            <ComplaintCard key={list.name} name={list.name} status={list.status} />
+          )
+        }) 
+      }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  main: {
+  menu: {
     width: "82%",
     height: "117%",
     alignSelf: "center",
