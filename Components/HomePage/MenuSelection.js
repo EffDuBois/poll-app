@@ -17,6 +17,7 @@ export default function MenuSelection() {
             source={require("../../assets/Choice-option/complaints.png")}
             style={styles.Icon}
             resizeMode="cover"
+            screen={"EventsPage"}
           />
         </MenuButton>
         <MenuButton

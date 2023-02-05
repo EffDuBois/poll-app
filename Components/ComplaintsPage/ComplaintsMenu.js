@@ -21,7 +21,7 @@ export default function ComplaintsMenu() {
 
   const onRefresh = () => {
     setRefreshing(true);
-    setComplaintList([...ComplaintList, { name: "added element", status: "Solved" }]);
+    setComplaintList([...ComplaintList, { name: "added element", status: "Solved" }]); //add getter function instead of added element
     setRefreshing(false);
   }
 

@@ -1,12 +1,20 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import AppText from "./AppText";
 import Tappable from "./Tappable";
 
 
 
-export default function AddButton() {
+export default function AddComplaintButton() {
+
+  const navigation = useNavigation();
+
+  const onPressHandler = () => {
+    navigation.navigate("ComplaintsForm")
+  }
+
     return(
-        <Tappable style={styles.addButton} buttonName={"Create New"}>
+        <Tappable  buttonName={"Create New"} style={styles.addButton} onPress={onPressHandler}>
         <AppText style={styles.plus}>+</AppText>
       </Tappable>
     );
@@ -21,9 +29,6 @@ const styles = StyleSheet.create({
       borderRadius: 100,
       paddingVertical: 15,
       paddingHorizontal: 90,
-      alignItems: "center",
-      textAlign: "center",
-      justifyContent: "center",
     },
   
   

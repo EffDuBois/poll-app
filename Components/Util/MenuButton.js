@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     padding: "5%",
     borderRadius: 20,
     justifyContent: "flex-end",
-    alignItems: "center",
     fontSize: 14,
   },
 

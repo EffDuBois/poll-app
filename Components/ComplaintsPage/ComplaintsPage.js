@@ -1,12 +1,12 @@
 import { StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import ComplaintsMenu from "./ComplaintsMenu";
-import HeroWithForm from "./HeroComplaintsMenu";
+import ComplaintsPageHero from "./ComplaintsPageHero";
 
 export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
-      <HeroWithForm/>
+      <ComplaintsPageHero/>
       <View style={styles.background}>
         <ComplaintsMenu />
       </View>

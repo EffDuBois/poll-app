@@ -19,7 +19,9 @@ export default function BackButton() {
 const styles = StyleSheet.create({
 
     backButton: {
-      marginLeft: 10,
+      marginLeft: 25,
+      marginTop: 7,
+      alignSelf: 'flex-start',
     },
   
     backButtonText: {

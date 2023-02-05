@@ -2,14 +2,14 @@ import { StyleSheet, View } from "react-native";
 import AppText from "../Util/AppText";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import BackButton from "../Util/BackButton";
-import AddButton from "../Util/AddButton";
+import AddComplaintButton from "../Util/AddComplaintButton";
 
-export default function HeroWithForm(props) {
+export default function ComplaintsPageHero() {
   return (
     <View style={[styles.hero]}>
       <BackButton/>
       <AppText style={GlobalStyles.heroText}>Complaints</AppText>
-      <AddButton/>
+      <AddComplaintButton/>
     </View>
   );
 }
