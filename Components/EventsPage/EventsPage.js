@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
-import AppText from "../Util/AppText";
 import BackButton from "../Util/BackButton";
 import Hero from "../Util/Hero";
 import Menu from "../Util/Menu";
 import SelectButton from "../Util/SelectButton";
+import SelectArray from "./SelectArray";
 
 export default function EventsPage() {
   return (
@@ -12,9 +12,7 @@ export default function EventsPage() {
       <BackButton />
       <Hero>Events</Hero>
       <Menu>
-        <View>
-            <SelectButton/>
-        </View>
+        <SelectArray/>
       </Menu>
     </View>
   );
