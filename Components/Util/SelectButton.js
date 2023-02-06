@@ -14,12 +14,12 @@ export default function SelectButton(props) {
 
 const styles = StyleSheet.create({
     button:{
-      margin: 30,
+      flex: 1,
+      margin: '2%',
+      height: '30%',
       alignSelf: "center",
       backgroundColor: "rgba(255, 137, 59, 0.3)",
       borderRadius: 100,
-      paddingVertical: 15,
-      paddingHorizontal: 90,
     },
 
     buttonFont: {
