@@ -5,6 +5,16 @@ import ComplaintCard from "../Util/ComplaintCard";
 import { useState } from "react";
 
 export default function ComplaintsMenu() {
+
+    //refreshing state and funciton
+    const [Refreshing, setRefreshing] = useState(false);
+    const onRefresh = () => {
+      setRefreshing(true);
+      setComplaintList([...ComplaintList, { name: "added element", status: "Solved" }]); //add getter function instead of added element
+      setRefreshing(false);
+    }  
+
+  //complaint list state
   const [ComplaintList, setComplaintList] = useState([
     { name: "Broken road", status: "Solved" },
     { name: "Dirty Road", status: "Processing" },
@@ -17,14 +27,6 @@ export default function ComplaintsMenu() {
     { name: "Bui Highway", status: "Declined" },
   ]);
 
-  const [Refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = () => {
-    setRefreshing(true);
-    setComplaintList([...ComplaintList, { name: "added element", status: "Solved" }]); //add getter function instead of added element
-    setRefreshing(false);
-  }
-
   return (
     <View style={[GlobalStyles.menu, styles.menu]}>
       <AppText style={GlobalStyles.headerText}>History</AppText>
@@ -33,12 +35,12 @@ export default function ComplaintsMenu() {
           <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} />
         }
       >
-        {ComplaintList.map((list) => {
+        {ComplaintList.map((item) => {
           return (
             <ComplaintCard
-              key={list.name}
-              name={list.name}
-              status={list.status}
+              key={item.name}
+              name={item.name}
+              status={item.status}
             />
           );
         })}
