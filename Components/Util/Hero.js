@@ -4,14 +4,8 @@ import GlobalStyles from "../StyleComponents/GlobalStyles";
 
 export default function Hero(props) {
   return (
-    <View style={[styles.hero, props.style]}>
+    <View style={[GlobalStyles.hero, props.style]}>
       <AppText style={GlobalStyles.heroText}>{props.children}</AppText>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  hero: {
-    flex: 1,
-  },
-});

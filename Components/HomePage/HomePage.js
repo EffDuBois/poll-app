@@ -1,16 +1,17 @@
-import {  StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MenuSelection from "./MenuSelection";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import Hero from "../Util/Hero";
+import Background from "../Util/Background";
 
 export default function HomePage() {
   return (
-    <View style={GlobalStyles.background}>
+    <Background>
       <Hero style={[styles.heroText]}>Welcome,</Hero>
       <View style={[GlobalStyles.menu, styles.menu]}>
         <MenuSelection />
       </View>
-    </View>
+    </Background>
   );
 }
 
@@ -24,5 +25,5 @@ const styles = StyleSheet.create({
 
   heroText: {
     marginTop: 22,
-  }
+  },
 });

@@ -1,16 +1,17 @@
 import { StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
+import Background from "../Util/Background";
 import ComplaintsMenu from "./ComplaintsMenu";
 import ComplaintsPageHero from "./ComplaintsPageHero";
 
 export default function HomePage() {
   return (
-    <View style={GlobalStyles.background}>
-      <ComplaintsPageHero/>
+    <Background>
+      <ComplaintsPageHero />
       <View style={styles.background}>
         <ComplaintsMenu />
       </View>
-    </View>
+    </Background>
   );
 }
 
@@ -21,5 +22,4 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     justifyContent: "flex-end",
   },
-
 });

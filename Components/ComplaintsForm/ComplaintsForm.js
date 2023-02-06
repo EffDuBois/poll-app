@@ -6,32 +6,30 @@ import RegularButton from "../Util/RegularButton";
 import Hero from "../Util/Hero";
 import InputField from "../Util/InputField";
 import Menu from "../Util/Menu";
+import Background from "../Util/Background";
 
 export default function HomePage() {
-
-
-    const onSubmit = () => {
-        return(
-            null
-        )
-    }
+  const onSubmit = () => {
+    return null;
+  };
 
   return (
-    <View style={GlobalStyles.background}>
+    <Background>
       <BackButton />
       <Hero>Complaints</Hero>
       <Menu>
-          <AppText style={GlobalStyles.headerText}>Please fill the following details</AppText>
-          <View>
-            <InputField name={"First Name"} />
-            <InputField name={"Last Name"} />
-            <InputField name={"Phone Number"} />
-            <InputField name={"Aadhar Number"} />
-            <InputField name={"Location"} />
-            <RegularButton buttonName={"Submit"} />
+        <AppText style={GlobalStyles.headerText}>
+          Please fill the following details
+        </AppText>
+        <View>
+          <InputField name={"First Name"} />
+          <InputField name={"Last Name"} />
+          <InputField name={"Phone Number"} />
+          <InputField name={"Aadhar Number"} />
+          <InputField name={"Location"} />
+          <RegularButton buttonName={"Submit"} />
         </View>
       </Menu>
-    </View>
+    </Background>
   );
 }
-
