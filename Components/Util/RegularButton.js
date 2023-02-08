@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import Tappable from "./Tappable";
 
-export default function RegularButton(props) {
+export default function RegularButton({buttonName, onPress}) {
   return (
     <Tappable
-      buttonName={props.buttonName}
-      onPress={props.onPress}
+      buttonName={buttonName}
+      onPress={onPress}
       style={styles.button}
       textStyle={styles.buttonFont}
     />
