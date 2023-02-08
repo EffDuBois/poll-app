@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { RefreshControl, ScrollView, View } from "react-native";
+import GlobalStyles from "../StyleComponents/GlobalStyles";
 import BackButton from "../Util/BackButton";
 import Background from "../Util/Background";
 import EventCard from "../Util/EventCard";
@@ -8,41 +9,54 @@ import Menu from "../Util/Menu";
 
 export default function EventsPage() {
 
+  const [PastEventList, setPastEventList] = useState([
+    { name: "Past Event 1" },
+  ]);
+
+  const [PresentEventList, setPresentEventList] = useState([
+    { name: "Present Event 1" },
+  ]);
+
+  const [FutureEventList, setFutureEventList] = useState([
+    { name: "Future Event 1" },
+  ]);
+
+  const [ListInUse, setListInUse] = useState(PresentEventList);
+
+  const listSelector = (switchNumber) => {
+    switchNumber == 0
+      ? setListInUse(PastEventList)
+      : switchNumber == 1
+      ? setListInUse(PresentEventList)
+      : switchNumber == 2
+      ? setListInUse(FutureEventList)
+      : console.log("listNumberExceedException");
+  };
+
   const [Refreshing, setRefreshing] = useState(false);
   const onRefresh = () => {
     setRefreshing(true);
-    setComplaintList([...ComplaintList, { name: "added element", status: "Solved" }]); //add getter function instead of added element
+    setPastEventList(/*getter Function here*/[...PastEventList, { name: "Past Event 2" }])
+    setPresentEventList(/*getter Function here*/[...PresentEventList, { name: "Present Event 2" }])
+    setFutureEventList(/*getter Function here*/[...FutureEventList, { name: "Future Event 2" }])
     setRefreshing(false);
-  }
-
-
-  const [PresentEventList, setPresentEventList] = useState([
-    {name: "Event 1"},
-  ])
-
-  const [PastEventList, setPastEventList] = useState([
-    {name: "Event 1"},
-  ])
-
-  const [FutureEventList, setFutureEventList] = useState([
-    {name: "Event 1"},
-  ])
+  };
 
   return (
     <Background>
       <BackButton />
       <Hero>Events</Hero>
       <Menu>
-      <View style={styles.buttonArray} >
-            <SelectButton buttonName={"Past"} />
-            <SelectButton buttonName={"Present"} />
-            <SelectButton buttonName={"Future"} />
-        </View>
-        {PresentEventList.map((item) => {
-          return(
-          <EventCard key={item.name}
-          name={item.name} />)
-        })}
+        <SelectArray selectListFunction={listSelector} />
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} />
+          }
+        >
+          {ListInUse.map((item) => {
+            return <EventCard key={item.name} name={item.name} />;
+          })}
+        </ScrollView>
       </Menu>
     </Background>
   );

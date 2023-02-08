@@ -6,8 +6,8 @@ export default function SelectButton(props) {
     <Tappable
       buttonName={props.buttonName}
       onPress={props.onPress}
-      style={styles.button}
-      textStyle={styles.buttonFont}
+      style={[styles.button, props.style]}
+      textStyle={[styles.buttonFont, props.textStyle]}
     />
   );
 }
