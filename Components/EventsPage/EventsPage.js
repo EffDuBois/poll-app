@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { View } from "react-native";
-import GlobalStyles from "../StyleComponents/GlobalStyles";
+import { StyleSheet, View } from "react-native";
 import BackButton from "../Util/BackButton";
+import Background from "../Util/Background";
 import EventCard from "../Util/EventCard";
 import Hero from "../Util/Hero";
 import Menu from "../Util/Menu";
-import SelectArray from "./SelectArray";
 
 export default function EventsPage() {
 
@@ -34,7 +33,11 @@ export default function EventsPage() {
       <BackButton />
       <Hero>Events</Hero>
       <Menu>
-        <SelectArray/>
+      <View style={styles.buttonArray} >
+            <SelectButton buttonName={"Past"} />
+            <SelectButton buttonName={"Present"} />
+            <SelectButton buttonName={"Future"} />
+        </View>
         {PresentEventList.map((item) => {
           return(
           <EventCard key={item.name}
@@ -44,3 +47,9 @@ export default function EventsPage() {
     </Background>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonArray: {
+      flexDirection: "row",
+  }
+})

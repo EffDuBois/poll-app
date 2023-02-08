@@ -1,13 +1,13 @@
 import { StyleSheet, View } from "react-native";
 import MenuSelection from "./MenuSelection";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
-import Hero from "../Util/Hero";
 import Background from "../Util/Background";
+import HeroWithoutBack from "../Util/HeroWithoutBack";
 
 export default function HomePage() {
   return (
     <Background>
-      <Hero style={[styles.heroText]}>Welcome,</Hero>
+      <HeroWithoutBack >Welcome,</HeroWithoutBack>
       <View style={[GlobalStyles.menu, styles.menu]}>
         <MenuSelection />
       </View>
@@ -21,9 +21,5 @@ const styles = StyleSheet.create({
     borderColor: "#ffffff",
     borderTopStartRadius: 35,
     borderTopEndRadius: 35,
-  },
-
-  heroText: {
-    marginTop: 22,
   },
 });
