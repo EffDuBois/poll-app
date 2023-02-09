@@ -62,8 +62,3 @@ export default function EventsPage() {
   );
 }
 
-const styles = StyleSheet.create({
-  buttonArray: {
-      flexDirection: "row",
-  }
-})
