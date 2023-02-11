@@ -2,28 +2,24 @@ import { Image, StyleSheet, View } from "react-native";
 import AppText from "../Util/AppText";
 import MenuButton from "../Util/MenuButton";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function MenuSelection() {
+
+  const navigation = useNavigation();
+
+  const onPressHandler = (screen) => {
+    navigation.navigate(screen)
+  };
+
   return (
     <View>
       <AppText style={GlobalStyles.headerText}>Choose Option</AppText>
       <View style={[styles.subMenu]}>
         <MenuButton
-          buttonName={"Complaints"}
-          color={"#rgba(3, 173, 173, 0.3)"}
-          screen={"ComplaintsPage"}
-        >
-          <Image
-            source={require("../../assets/Choice-option/complaints.png")}
-            style={styles.Icon}
-            resizeMode="cover"
-            screen={"EventsPage"}
-          />
-        </MenuButton>
-        <MenuButton
           buttonName={"Events"}
           color={"#rgba(255, 209, 1, 0.3)"}
-          screen={"EventsPage"}
+          onPress={()=>{onPressHandler("EventsPage")}}
         >
           <Image
             source={require("../../assets/Choice-option/events.png")}
@@ -36,19 +32,24 @@ export default function MenuSelection() {
         <MenuButton
           buttonName={"Polls"}
           color={"#rgba(237, 69, 69, 0.3)"}
-          screen={"PollsPage"}
+          onPress={()=>{onPressHandler("PollsPage")}}
         >
           <Image
             source={require("../../assets/Choice-option/poll.png")}
             style={styles.Icon}
             resizeMode="stretch"
           />
+          
         </MenuButton>
-        <MenuButton buttonName={"Exit"} color={"#rgba(37, 211, 102, 0.51)"}>
+        <MenuButton
+          buttonName={"Complaints"}
+          color={"#rgba(3, 173, 173, 0.3)"}
+          onPress={()=>{onPressHandler("ComplaintsPage")}}
+        >
           <Image
-            source={require("../../assets/Choice-option/exit.png")}
+            source={require("../../assets/Choice-option/complaints.png")}
             style={styles.Icon}
-            resizeMode="stretch"
+            resizeMode="cover"
           />
         </MenuButton>
       </View>

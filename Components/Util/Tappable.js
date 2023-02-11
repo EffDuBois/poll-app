@@ -1,11 +1,11 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 
-export default function Tappable(props) {
+export default function Tappable({onPress, buttonName, style, textStyle, children}) {
   return (
-    <TouchableOpacity onPress={props.onPress} style={[styles.button, props.style,]}>
-      {props.children}
-      <AppText style={props.textStyle}>{props.buttonName}</AppText>
+    <TouchableOpacity onPress={onPress} style={[styles.button, style,]}>
+      {children}
+      <AppText style={textStyle}>{buttonName}</AppText>
     </TouchableOpacity>
   );
 }

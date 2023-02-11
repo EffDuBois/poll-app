@@ -2,10 +2,10 @@ import { StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 
 
-export default function Menu(props) {
+export default function Menu({children}) {
     return(
         <View style={[GlobalStyles.menu, styles.menu]}>
-            {props.children}
+            {children}
         </View>
     )
 }

@@ -23,10 +23,10 @@ export default function AddComplaintButton() {
 const styles = StyleSheet.create({
   
     addButton: {
-      margin: 30,
-      alignSelf: "center",
+      marginHorizontal: '10.5%',
+      marginVertical: '5%',
       backgroundColor: "rgba(0, 0, 0, 0.28)",
-      borderRadius: 100,
+      borderRadius: 1000,
       paddingVertical: 15,
       paddingHorizontal: 90,
     },

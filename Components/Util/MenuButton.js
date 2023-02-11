@@ -1,30 +1,24 @@
-import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import Tappable from "./Tappable";
 
-export default function MenuButton(props) {
-  const navigation = useNavigation();
-
-  const onPressHandler = () => {
-    navigation.navigate(props.screen);
-  };
-
+export default function MenuButton({buttonName, color, onPress, children}) {
+  
   return (
     <Tappable
-      buttonName={props.buttonName}
-      onPress={onPressHandler}
-      style={[{ backgroundColor: props.color }, styles.SelectButton]}
+      buttonName={buttonName}
+      onPress={onPress}
+      style={[{ backgroundColor: color }, styles.SelectButton]}
       textStyle={styles.ButtonText}
     >
-      {props.children}
+      {children}
     </Tappable>
   );
 }
 
 const styles = StyleSheet.create({
   SelectButton: {
-    width: "35%",
-    height: "83%",
+    flex: 1,
+    margin: '5%',
     padding: "5%",
     borderRadius: 20,
     justifyContent: "flex-end",

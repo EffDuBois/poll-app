@@ -2,19 +2,19 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 
 
-export default function EventCard(props) {
+export default function EventCard({name}) {
     return(
         <TouchableOpacity style={styles.card}>
-            <AppText>{props.name}</AppText>
+            <AppText>{name}</AppText>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     card: {
-        alignSelf: "stretch",
-        backgroundColor: 'rgba(0, 0, 0, 0.06)',
+        flex: 1,
         margin: '5%',
+        backgroundColor: 'rgba(0, 0, 0, 0.06)',
         borderLeftWidth: 10,
         padding: 7,
     }
