@@ -8,6 +8,7 @@ import ComplaintsForm from "./Components/ComplaintsForm/ComplaintsForm";
 import HomePage from "./Components/HomePage/HomePage";
 import EventsPage from "./Components/EventsPage/EventsPage";
 import LoginPage from "./Components/Auth/LoginPage";
+import PollsPage from "./Components/PollsPage/PollsPage";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
           <Stack.Screen name="ComplaintsPage" component={ComplaintsPage} />
           <Stack.Screen name="ComplaintsForm" component={ComplaintsForm} />
           <Stack.Screen name="EventsPage" component={EventsPage} />
+          <Stack.Screen name="PollsPage" component={PollsPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaWrap>

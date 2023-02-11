@@ -17,7 +17,6 @@ export default function HomePage() {
 
   return (
     <View style={GlobalStyles.background}>
-      <BackButton />
       <Hero>Complaints</Hero>
       <Menu>
         <AppText style={GlobalStyles.headerText}>

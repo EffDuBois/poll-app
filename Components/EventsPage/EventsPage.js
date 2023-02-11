@@ -44,7 +44,6 @@ export default function EventsPage() {
 
   return (
     <View style={GlobalStyles.background}>
-      <BackButton />
       <Hero>Events</Hero>
       <Menu>
         <SelectArray selectListFunction={listSelector} />
