@@ -13,9 +13,9 @@ export default function ComplaintCard({name, status}) {
 
 const styles = StyleSheet.create({
   card: {
-    width: "85%",
-    margin: 9,
-    alignSelf: "center",
+    flex: 1,
+    marginHorizontal: '5%',
+    marginVertical: '3%',
     paddingVertical: 9,
     paddingHorizontal: 12,
   },

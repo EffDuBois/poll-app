@@ -12,9 +12,9 @@ export default function EventCard({name}) {
 
 const styles = StyleSheet.create({
     card: {
-        alignSelf: "stretch",
-        backgroundColor: 'rgba(0, 0, 0, 0.06)',
+        flex: 1,
         margin: '5%',
+        backgroundColor: 'rgba(0, 0, 0, 0.06)',
         borderLeftWidth: 10,
         padding: 7,
     }

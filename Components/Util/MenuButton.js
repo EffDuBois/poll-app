@@ -17,8 +17,8 @@ export default function MenuButton({buttonName, color, onPress, children}) {
 
 const styles = StyleSheet.create({
   SelectButton: {
-    width: "35%",
-    height: "83%",
+    flex: 1,
+    margin: '5%',
     padding: "5%",
     borderRadius: 20,
     justifyContent: "flex-end",
