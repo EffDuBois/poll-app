@@ -1,9 +1,10 @@
+import { View } from "react-native";
 import InputField from "../Util/InputField";
 import RegularButton from "../Util/RegularButton";
 
 
 
-export default function SigninMenu() {
+export default function SigninMenu({Email, setEmail, Password, setPassword, signUpHandler}) {
     return(
         <View>
           <InputField
@@ -19,9 +20,7 @@ export default function SigninMenu() {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={true}
           />
-          <RegularButton buttonName={"Sign In"} onPress={() => {
-              handleSignUp;
-            }} />
+          <RegularButton buttonName={"Sign In"} onPress={() => {signUpHandler}} />
         </View>
     )
 }
