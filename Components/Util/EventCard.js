@@ -2,10 +2,10 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 
 
-export default function EventCard(props) {
+export default function EventCard({name}) {
     return(
         <TouchableOpacity style={styles.card}>
-            <AppText>{props.name}</AppText>
+            <AppText>{name}</AppText>
         </TouchableOpacity>
     )
 }

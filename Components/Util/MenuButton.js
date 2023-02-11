@@ -2,21 +2,21 @@ import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import Tappable from "./Tappable";
 
-export default function MenuButton(props) {
+export default function MenuButton({screen, buttonName, color, children}) {
   const navigation = useNavigation();
 
   const onPressHandler = () => {
-    navigation.navigate(props.screen);
+    navigation.navigate(screen);
   };
 
   return (
     <Tappable
-      buttonName={props.buttonName}
+      buttonName={buttonName}
       onPress={onPressHandler}
-      style={[{ backgroundColor: props.color }, styles.SelectButton]}
+      style={[{ backgroundColor: color }, styles.SelectButton]}
       textStyle={styles.ButtonText}
     >
-      {props.children}
+      {children}
     </Tappable>
   );
 }

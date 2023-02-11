@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 import Hero from "./Hero";
 
-export default function HeroWithoutBack(props) {
+export default function HeroWithoutBack({children}) {
     return(
-        <Hero style={[styles.heroText]}>{props.children}</Hero>
+        <Hero style={[styles.heroText]}>{children}</Hero>
     )
 }
 

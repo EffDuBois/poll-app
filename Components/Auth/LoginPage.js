@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View } from "react-native";
 import AppText from "../Util/AppText";
@@ -17,22 +18,28 @@ export default function LoginPage() {
   const [ReEnterSigninPassword, setReEnterSigninPassword] = useState("");
 
   const [isPasswordSame, setisPasswordSame] = useState(true);
-  const [WarningToUser, setWarningToUSer] = useState("");
-  
+
   const PasswordHandler = (text, setPassword) => {
     setPassword(text);
-    SigninPassword==ReEnterSigninPassword ? setisPasswordSame(True)
-    : setisPasswordSame(false);
+    SigninPassword == ReEnterSigninPassword
+      ? setisPasswordSame(True)
+      : setisPasswordSame(false);
     WarningPrinter;
   };
 
-  const  WarningPrinter = () => {
-    return(isPasswordSame ? null : <AppText>Passwords are not same</AppText>)
-  }
+  const WarningPrinter = () => {
+    return isPasswordSame ? null : <AppText>Passwords are not same</AppText>;
+  };
 
-  const singinHandler = () => {};
+  const navigation = useNavigation();
 
-  const signUpHandler = () => {};
+  const singinHandler = () => {
+    navigation.navigate("HomePage");
+  };
+
+  const signUpHandler = () => {
+    navigation.navigate("HomePage");
+  };
 
   const [screen, setScreen] = useState(0);
 
@@ -70,7 +77,7 @@ export default function LoginPage() {
           </View>
         ) : screen == 1 ? (
           <View>
-            <WarningPrinter/>
+            <WarningPrinter />
             <InputField
               name={"Email"}
               placeholder={"Email"}
@@ -88,7 +95,9 @@ export default function LoginPage() {
               name={"Verify-Password"}
               placeholder={"Verify-Password"}
               value={ReEnterSigninPassword}
-              onChangeText={(text) => PasswordHandler(text, setReEnterSigninPassword)}
+              onChangeText={(text) =>
+                PasswordHandler(text, setReEnterSigninPassword)
+              }
               secureTextEntry={true}
             />
             <RegularButton
@@ -101,7 +110,6 @@ export default function LoginPage() {
         ) : (
           console.log("out of bound login menu selection")
         )}
-
       </Menu>
     </Background>
   );

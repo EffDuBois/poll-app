@@ -1,8 +1,8 @@
 import { Text, StyleSheet } from "react-native";
 
-export default function AppText(props) {
+export default function AppText({style, children}) {
   return (
-      <Text style={[styles.text, props.style]}>{props.children}</Text>
+      <Text style={[styles.text, style]}>{children}</Text>
   );
 }
 

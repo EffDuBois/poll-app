@@ -9,18 +9,6 @@ export default function MenuSelection() {
       <AppText style={GlobalStyles.headerText}>Choose Option</AppText>
       <View style={[styles.subMenu]}>
         <MenuButton
-          buttonName={"Complaints"}
-          color={"#rgba(3, 173, 173, 0.3)"}
-          screen={"ComplaintsPage"}
-        >
-          <Image
-            source={require("../../assets/Choice-option/complaints.png")}
-            style={styles.Icon}
-            resizeMode="cover"
-            screen={"EventsPage"}
-          />
-        </MenuButton>
-        <MenuButton
           buttonName={"Events"}
           color={"#rgba(255, 209, 1, 0.3)"}
           screen={"EventsPage"}
@@ -43,12 +31,18 @@ export default function MenuSelection() {
             style={styles.Icon}
             resizeMode="stretch"
           />
+          
         </MenuButton>
-        <MenuButton buttonName={"Exit"} color={"#rgba(37, 211, 102, 0.51)"}>
+        <MenuButton
+          buttonName={"Complaints"}
+          color={"#rgba(3, 173, 173, 0.3)"}
+          screen={"ComplaintsPage"}
+        >
           <Image
-            source={require("../../assets/Choice-option/exit.png")}
+            source={require("../../assets/Choice-option/complaints.png")}
             style={styles.Icon}
-            resizeMode="stretch"
+            resizeMode="cover"
+            screen={"EventsPage"}
           />
         </MenuButton>
       </View>

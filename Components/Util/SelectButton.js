@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 import Tappable from "./Tappable";
 
-export default function SelectButton(props) {
+export default function SelectButton({buttonName, onPress, style, textStyle}) {
   return (
     <Tappable
-      buttonName={props.buttonName}
-      onPress={props.onPress}
-      style={[styles.button, props.style]}
-      textStyle={[styles.buttonFont, props.textStyle]}
+      buttonName={buttonName}
+      onPress={onPress}
+      style={[styles.button, style]}
+      textStyle={[styles.buttonFont, textStyle]}
     />
   );
 }
