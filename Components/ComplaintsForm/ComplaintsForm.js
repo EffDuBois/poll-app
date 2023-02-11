@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import AppText from "../Util/AppText";
 import BackButton from "../Util/BackButton";
@@ -9,31 +9,40 @@ import Menu from "../Util/Menu";
 import { useState } from "react";
 
 export default function HomePage() {
-
   const [Details, setDetails] = useState("");
 
-    const onSubmit = () => {
-        return(
-            console.log(Details)
-        )
-    }
+  const onSubmit = () => {
+    return console.log(Details);
+  };
 
   return (
     <View style={GlobalStyles.background}>
       <BackButton />
       <Hero>Complaints</Hero>
       <Menu>
-          <AppText style={GlobalStyles.headerText}>Please fill the following details</AppText>
-          <View>
-            <InputField name={"First Name"} onChangeText={(value)=>{setDetails({...Details, firstName: value})}} />
-            <InputField name={"Last Name"} onChangeText={(value)=>{setDetails({...Details, lastName: value})}} />
-            <InputField name={"Phone Number"} onChangeText={(value)=>{setDetails({...Details, phoneNumber: value})}} />
-            <InputField name={"Aadhar Number"} onChangeText={(value)=>{setDetails({...Details, aadharNumber: value})}} />
-            <InputField name={"Location"} onChangeText={(value)=>{setDetails([...Details, {...Details, location: value}])}} />
-            <RegularButton buttonName={"Submit"} onPress={onSubmit} />
-        </View>
+        <AppText style={GlobalStyles.headerText}>
+          Please fill the following details
+        </AppText>
+        <ScrollView >
+          <InputField name={"First Name"} />
+          <InputField name={"Last Name"} />
+          <InputField name={"Phone Number"} />
+          <InputField name={"Issue"} />
+          <InputField name={"Picture of location"}>
+            <RegularButton buttonName={"URL"} style={styles.urlBtn} />
+          </InputField>
+          <InputField name={"Location"} />
+          <InputField name={"Description (Optional)"} />
+          <RegularButton buttonName={"Submit"} onPress={onSubmit} />
+        </ScrollView>
       </Menu>
     </View>
   );
 }
 
+const styles = StyleSheet.create({
+  urlBtn: {
+    alignSelf: "flex-start",
+    margin: 0,
+  },
+});
