@@ -1,18 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import Tappable from "./Tappable";
 
-export default function MenuButton({screen, buttonName, color, children}) {
-  const navigation = useNavigation();
-
-  const onPressHandler = () => {
-    navigation.navigate(screen);
-  };
-
+export default function MenuButton({buttonName, color, onPress, children}) {
+  
   return (
     <Tappable
       buttonName={buttonName}
-      onPress={onPressHandler}
+      onPress={onPress}
       style={[{ backgroundColor: color }, styles.SelectButton]}
       textStyle={styles.ButtonText}
     >

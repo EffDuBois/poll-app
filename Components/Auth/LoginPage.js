@@ -34,11 +34,11 @@ export default function LoginPage() {
   const navigation = useNavigation();
 
   const singinHandler = () => {
-    navigation.navigate("HomePage");
+    navigation.replace("HomePage");
   };
 
   const signUpHandler = () => {
-    navigation.navigate("HomePage");
+    navigation.replace("HomePage");
   };
 
   const [screen, setScreen] = useState(0);
@@ -68,12 +68,7 @@ export default function LoginPage() {
               onChangeText={(text) => setLoginPassword(text)}
               secureTextEntry={true}
             />
-            <RegularButton
-              buttonName={"Sign In"}
-              onPress={() => {
-                singinHandler;
-              }}
-            />
+            <RegularButton buttonName={"Sign In"} onPress={singinHandler} />
           </View>
         ) : screen == 1 ? (
           <View>
@@ -100,12 +95,7 @@ export default function LoginPage() {
               }
               secureTextEntry={true}
             />
-            <RegularButton
-              buttonName={"Sign Up"}
-              onPress={() => {
-                signUpHandler;
-              }}
-            />
+            <RegularButton buttonName={"Sign Up"} onPress={signUpHandler} />
           </View>
         ) : (
           console.log("out of bound login menu selection")
