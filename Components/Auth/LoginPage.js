@@ -48,7 +48,7 @@ export default function LoginPage() {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={true}
           />
-          <RegularButton buttonName={"Sign Up"} onPress={() => {
+          <RegularButton buttonName={"Sign In"} onPress={() => {
               handleSignUp;
             }} />
         </View>
