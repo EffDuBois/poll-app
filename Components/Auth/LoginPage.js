@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import AppText from "../Util/AppText";
 import Background from "../Util/Background";
 import HeroWithoutBack from "../Util/HeroWithoutBack";
@@ -38,6 +38,9 @@ export default function LoginPage() {
   };
 
   const signUpHandler = () => {
+    if (!isPasswordSame) {
+      Alert('Warning:', 'The passwords don\'t match', [{text:'ok' },])
+    }
     navigation.replace("HomePage");
   };
 
