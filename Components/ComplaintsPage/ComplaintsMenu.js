@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getComplaintList } from "../Redux/Actions";
 
 export default function ComplaintsMenu() {
-  const { complaintList } = useSelector((state) => state.complaintReducer);
+  const { complaintList } = useSelector((state) => state.complaintListReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

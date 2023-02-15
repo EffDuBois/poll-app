@@ -1,8 +1,6 @@
 import {
   SET_USER_EMAIL,
   SET_USER_LOGIN_PASSWORD,
-
-
   SET_COMPLAINT_DESCRIPTION,
   SET_COMPLAINT_FIRSTNAME,
   SET_COMPLAINT_IMAGE_URL,
@@ -10,8 +8,7 @@ import {
   SET_COMPLAINT_LASTNAME,
   SET_COMPLAINT_LOCATION,
   SET_COMPLAINT_PHONENUMBER,
-
-  GET_COMPLAINT_LIST
+  GET_COMPLAINT_LIST,
 } from "./Actions";
 
 const initialLoginState = {
@@ -31,24 +28,23 @@ export function userLoginReducer(state = initialLoginState, action) {
 }
 
 const initalComplaintsFormState = {
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
+  first_name: "",
+  last_name: "",
+  phone_number: "",
   issue: "",
   image: "",
   location: "",
   description: "",
-  complaintList: [],
 };
 
-export function complaintReducer(state = initalComplaintsFormState, action) {
+export function complaintFormReducer(state = initalComplaintsFormState, action) {
   switch (action.type) {
     case SET_COMPLAINT_FIRSTNAME:
-      return { ...state, firstName: action.payload };
+      return { ...state, first_name: action.payload };
     case SET_COMPLAINT_LASTNAME:
-      return { ...state, lastName: action.payload };
+      return { ...state, last_name: action.payload };
     case SET_COMPLAINT_PHONENUMBER:
-      return { ...state, phoneNumber: action.payload };
+      return { ...state, phone_number: action.payload };
     case SET_COMPLAINT_ISSUE:
       return { ...state, issue: action.payload };
     case SET_COMPLAINT_IMAGE_URL:
@@ -58,9 +54,22 @@ export function complaintReducer(state = initalComplaintsFormState, action) {
     case SET_COMPLAINT_DESCRIPTION:
       return { ...state, description: action.payload };
 
+    default:
+      return state;
+  }
+}
+
+const initalComplaintsListState = {
+  complaintList: [],
+};
+
+export function complaintListReducer(
+  state = initalComplaintsListState,
+  action
+) {
+  switch (action.type) {
     case GET_COMPLAINT_LIST:
       return { ...state, complaintList: action.payload };
-      
     default:
       return state;
   }

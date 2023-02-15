@@ -27,7 +27,7 @@ export default function App() {
           >
             {/* <Stack.Screen name="LoginPage" component={LoginPage} /> */}
             {/* <Stack.Screen name="HomePage" component={HomePage} /> */}
-            <Stack.Screen name="ComplaintsPage" component={ComplaintsPage} />
+            {/* <Stack.Screen name="ComplaintsPage" component={ComplaintsPage} /> */}
             <Stack.Screen name="ComplaintsForm" component={ComplaintsForm} />
             <Stack.Screen name="EventsPage" component={EventsPage} />
             <Stack.Screen name="PollsPage" component={PollsPage} />

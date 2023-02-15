@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.29.71:4000/complaints/5";
+const API_URL = "http://192.168.29.71:4000";
 
 export const SET_USER_EMAIL = "SET_USER_EMAIL";
 export const SET_USER_PASSWORD = "SET_USER_PASSWORD";
@@ -12,6 +12,8 @@ export const SET_COMPLAINT_LOCATION = "SET_COMPLAINT_LOCATION";
 export const SET_COMPLAINT_DESCRIPTION = "SET_COMPLAINT_DESCRIPTION";
 
 export const GET_COMPLAINT_LIST = "GET_COMPLAINT_LIST";
+
+export const POST_COMPLAINT = "POST_COMPLAINT";
 
 export const setEmail = (email) => (dispatch) => {
   dispatch({
@@ -30,8 +32,9 @@ export const setLoginPassword = (loginPassword) => (dispatch) => {
 export const getComplaintList = () => {
   return async (dispatch) => {
     try {
-      const result = await fetch(API_URL, {
+      const result = await fetch(API_URL + "/complaints/5", {
         method: "GET",
+        headers: {},
       });
       const json = await result.json();
       if (json) {
@@ -43,29 +46,48 @@ export const getComplaintList = () => {
         console.log("Unable to fetch!");
       }
     } catch (error) {
-      console.log("fetch error:  "+error);
+      console.log(error);
     }
   };
 };
 
-export const setComplaintFirstname = (firstName) => (dispatch) => {
+export const postComplaint = (complaintDetails) => {
+  return async (dispatch) => {
+    try {
+      console.log(complaintDetails);
+      const result = await fetch(API_URL + "/complaints/user_id", {
+        method: "POST",
+        headers: {},
+        body: JSON.stringify(complaintDetails),
+      });
+      dispatch({
+        type: POST_COMPLAINT,
+        payload: complaintDetails,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const setComplaintFirstname = (first_name) => (dispatch) => {
   dispatch({
-    type: SET_USER_COMPLAINT_FIRSTNAME,
-    payload: firstName,
+    type: SET_COMPLAINT_FIRSTNAME,
+    payload: first_name,
   });
 };
 
-export const setComplaintsLastname = (lastName) => (dispatch) => {
+export const setComplaintsLastname = (last_name) => (dispatch) => {
   dispatch({
-    type: SET_COMPLAINT_LAST_NAME,
-    payload: lastName,
+    type: SET_COMPLAINT_LASTNAME,
+    payload: last_name,
   });
 };
 
-export const setComplaintPhonenumber = (phoneNumber) => (dispatch) => {
+export const setComplaintPhonenumber = (phone_number) => (dispatch) => {
   dispatch({
     type: SET_COMPLAINT_PHONENUMBER,
-    payload: phoneNumber,
+    payload: phone_number,
   });
 };
 
