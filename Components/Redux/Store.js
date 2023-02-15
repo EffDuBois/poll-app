@@ -6,13 +6,14 @@ import {
   complaintFormReducer,
   complaintListReducer,
 } from "./Reducers/Complaint";
-import { eventListReducer } from "./Reducers/Event";
+import { eventListReducer, eventDetailsReducer } from "./Reducers/Event";
 
 const rootReducer = combineReducers({
   userLoginReducer,
   complaintFormReducer,
   complaintListReducer,
   eventListReducer,
+  eventDetailsReducer,
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));

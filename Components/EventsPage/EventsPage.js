@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlatList, RefreshControl, ScrollView, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import BackButton from "../Util/BackButton";
@@ -9,10 +9,18 @@ import SelectArray from "./SelectArray";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getEventList } from "../Redux/Actions/Event";
+import { useNavigation } from "@react-navigation/native";
 
 export default function EventsPage() {
+
+  const navigation = useNavigation();
+
   const { event_list } = useSelector((state) => state.eventListReducer);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getEventList(timeframe));
+  })
 
   const [timeframe, settimeframe] = useState("current");
 
@@ -41,7 +49,7 @@ export default function EventsPage() {
         <SelectArray selectListFunction={listSelector} />
         <FlatList
           refreshControl={
-            <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} />
+            <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} onPress={navigation.navigate("EventDetailPage", item.event_id)}/>
           }
           data={event_list}
           renderItem={({ item }) => (

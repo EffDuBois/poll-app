@@ -30,7 +30,7 @@ export default function App() {
             {/* <Stack.Screen name="HomePage" component={HomePage} /> */}
             {/* <Stack.Screen name="ComplaintsPage" component={ComplaintsPage} /> */}
             {/* <Stack.Screen name="ComplaintsForm" component={ComplaintsForm} /> */}
-            <Stack.Screen name="EventsPage" component={EventsPage} />
+            {/* <Stack.Screen name="EventsPage" component={EventsPage} /> */}
             <Stack.Screen name="EventDetailPage" component={EventDetailPage} />
             <Stack.Screen name="PollsPage" component={PollsPage} />
           </Stack.Navigator>
