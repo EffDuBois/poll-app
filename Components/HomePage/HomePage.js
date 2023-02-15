@@ -6,7 +6,7 @@ import HeroWithoutBack from "../Util/HeroWithoutBack";
 export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
-      <HeroWithoutBack style={[styles.heroText]}>Welcome,</HeroWithoutBack>
+      <HeroWithoutBack title={"Welcome,"} style={[styles.heroText]} />
       <View style={[GlobalStyles.menu, styles.menu]}>
         <MenuSelection />
       </View>

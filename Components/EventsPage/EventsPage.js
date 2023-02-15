@@ -44,7 +44,7 @@ export default function EventsPage() {
 
   return (
     <View style={GlobalStyles.background}>
-      <Hero>Events</Hero>
+      <Hero title={"Events"}/>
       <Menu>
         <SelectArray selectListFunction={listSelector} />
         <ScrollView

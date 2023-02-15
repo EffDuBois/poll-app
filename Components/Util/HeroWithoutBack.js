@@ -2,11 +2,11 @@ import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 
-export default function HeroWithoutBack({ style, children }) {
+export default function HeroWithoutBack({ style, title }) {
   return (
     <View style={[styles.hero, style]}>
       <AppText style={[GlobalStyles.heroText, styles.heroText]}>
-        {children}
+        {title}
       </AppText>
     </View>
   );

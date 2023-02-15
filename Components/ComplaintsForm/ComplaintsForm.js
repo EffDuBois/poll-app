@@ -43,7 +43,7 @@ export default function HomePage() {
 
   return (
     <View style={GlobalStyles.background}>
-      <Hero>Complaints</Hero>
+      <Hero title={"New Complaint"}/>
       <Menu>
         <AppText style={GlobalStyles.headerText}>
           Please fill the following details

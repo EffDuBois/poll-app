@@ -6,7 +6,7 @@ import Menu from "../Util/Menu";
 export default function PollsPage() {
   return (
     <Background>
-      <Hero>Polls</Hero>
+      <Hero title={"Polls"}/>
       <Menu></Menu>
     </Background>
   );
