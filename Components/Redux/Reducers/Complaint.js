@@ -1,6 +1,4 @@
 import {
-  SET_USER_EMAIL,
-  SET_USER_LOGIN_PASSWORD,
   SET_COMPLAINT_DESCRIPTION,
   SET_COMPLAINT_FIRSTNAME,
   SET_COMPLAINT_IMAGE_URL,
@@ -8,24 +6,9 @@ import {
   SET_COMPLAINT_LASTNAME,
   SET_COMPLAINT_LOCATION,
   SET_COMPLAINT_PHONENUMBER,
+  
   GET_COMPLAINT_LIST,
-} from "./Actions";
-
-const initialLoginState = {
-  email: "",
-  loginPassword: "",
-};
-
-export function userLoginReducer(state = initialLoginState, action) {
-  switch (action.type) {
-    case SET_USER_EMAIL:
-      return { ...state, email: action.payload };
-    case SET_USER_LOGIN_PASSWORD:
-      return { ...state, loginPassword: action.payload };
-    default:
-      return state;
-  }
-}
+} from "../Actions/Complaint";
 
 const initalComplaintsFormState = {
   first_name: "",
@@ -37,7 +20,10 @@ const initalComplaintsFormState = {
   description: "",
 };
 
-export function complaintFormReducer(state = initalComplaintsFormState, action) {
+export function complaintFormReducer(
+  state = initalComplaintsFormState,
+  action
+) {
   switch (action.type) {
     case SET_COMPLAINT_FIRSTNAME:
       return { ...state, first_name: action.payload };

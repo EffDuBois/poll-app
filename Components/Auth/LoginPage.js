@@ -10,7 +10,7 @@ import RegularButton from "../Util/RegularButton";
 import SelectSignin from "./SelectSignin";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setEmail, setLoginPassword } from "../Redux/Actions";
+import { setEmail, setLoginPassword } from "../Redux/Actions/Complaint";
 
 export default function LoginPage() {
   // const [Email, setEmail] = useState("");

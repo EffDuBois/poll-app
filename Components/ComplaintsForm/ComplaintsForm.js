@@ -15,7 +15,7 @@ import {
   setComplaintLocation,
   setComplaintPhonenumber,
   setComplaintsLastname,
-} from "../Redux/Actions";
+} from "../Redux/Actions/Complaint";
 
 export default function HomePage() {
   const {
@@ -31,19 +31,21 @@ export default function HomePage() {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(postComplaint({
-      first_name,
-      last_name,
-      phone_number,
-      issue,
-      location,
-      description,
-    }));
+    dispatch(
+      postComplaint({
+        first_name,
+        last_name,
+        phone_number,
+        issue,
+        location,
+        description,
+      })
+    );
   };
 
   return (
     <View style={GlobalStyles.background}>
-      <Hero title={"New Complaint"}/>
+      <Hero title={"New Complaint"} />
       <Menu>
         <AppText style={GlobalStyles.headerText}>
           Please fill the following details

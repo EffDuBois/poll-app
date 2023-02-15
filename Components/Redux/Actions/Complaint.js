@@ -1,7 +1,4 @@
-const API_URL = "http://192.168.29.71:4000";
-
-export const SET_USER_EMAIL = "SET_USER_EMAIL";
-export const SET_USER_PASSWORD = "SET_USER_PASSWORD";
+import API_URL from "../../../API_URL";
 
 export const SET_COMPLAINT_FIRSTNAME = "SET_COMPLAINT_FIRST_NAME";
 export const SET_COMPLAINT_LASTNAME = "SET_COMPLAINT_LAST_NAME";
@@ -14,20 +11,6 @@ export const SET_COMPLAINT_DESCRIPTION = "SET_COMPLAINT_DESCRIPTION";
 export const GET_COMPLAINT_LIST = "GET_COMPLAINT_LIST";
 
 export const POST_COMPLAINT = "POST_COMPLAINT";
-
-export const setEmail = (email) => (dispatch) => {
-  dispatch({
-    type: SET_USER_EMAIL,
-    payload: email,
-  });
-};
-
-export const setLoginPassword = (loginPassword) => (dispatch) => {
-  dispatch({
-    type: SET_USER_PASSWORD,
-    payload: loginPassword,
-  });
-};
 
 export const getComplaintList = () => {
   return async (dispatch) => {

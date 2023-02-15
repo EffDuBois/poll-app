@@ -2,9 +2,9 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 
 
-export default function EventCard({name}) {
+export default function EventCard({name, onPress}) {
     return(
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={onPress}>
             <AppText>{name}</AppText>
         </TouchableOpacity>
     )
