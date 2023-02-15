@@ -3,7 +3,7 @@ import AppText from "./AppText";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import BackButton from "./BackButton";
 
-export default function Hero({style,children}) {
+export default function Hero({style, children}) {
   return (
     <View style={[styles.hero, style]}>
       <BackButton/>

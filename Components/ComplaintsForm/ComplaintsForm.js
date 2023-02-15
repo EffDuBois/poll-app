@@ -1,15 +1,18 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import AppText from "../Util/AppText";
-import BackButton from "../Util/BackButton";
 import RegularButton from "../Util/RegularButton";
 import Hero from "../Util/Hero";
 import InputField from "../Util/InputField";
 import Menu from "../Util/Menu";
-import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setComplaintDescription, setComplaintFirstname, setComplaintIssue, setComplaintLocation, setComplaintPhonenumber, setComplaintsLastname } from "../Redux/Actions";
 
 export default function HomePage() {
-  const [Details, setDetails] = useState("");
+  const {firstName, lastName, phoneNumber, issue, picture, location, description} = useSelector(state => state.complaintReducer)
+
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     return console.log(Details);
@@ -23,15 +26,15 @@ export default function HomePage() {
           Please fill the following details
         </AppText>
         <ScrollView >
-          <InputField name={"First Name"} />
-          <InputField name={"Last Name"} />
-          <InputField name={"Phone Number"} />
-          <InputField name={"Issue"} />
+          <InputField name={"First Name"} value={firstName} onChangeText={(value) => dispatch(setComplaintFirstname(value))}/>
+          <InputField name={"Last Name"} value={lastName} onChangeText={(value) => dispatch(setComplaintsLastname(value))}/>
+          <InputField name={"Phone Number"} value={phoneNumber} onChangeText={(value) => dispatch(setComplaintPhonenumber(value))}/>
+          <InputField name={"Issue"} value={issue} onChangeText={(value) => dispatch(setComplaintIssue(value))}/>
           <InputField name={"Picture of location"}>
             <RegularButton buttonName={"URL"} style={styles.urlBtn} />
           </InputField>
-          <InputField name={"Location"} />
-          <InputField name={"Description (Optional)"} />
+          <InputField name={"Location"} value={location} onChangeText={(value) => dispatch(setComplaintLocation(value))}/>
+          <InputField name={"Description (Optional)"} value={description} onChangeText={(value) => dispatch(setComplaintDescription(value))}/>
           <RegularButton buttonName={"Submit"} onPress={onSubmit} />
         </ScrollView>
       </Menu>
