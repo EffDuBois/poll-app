@@ -10,9 +10,4 @@ export const setEmail = (email) => (dispatch) => {
   });
 };
 
-export const setLoginPassword = (loginPassword) => (dispatch) => {
-  dispatch({
-    type: SET_USER_PASSWORD,
-    payload: loginPassword,
-  });
-};
+

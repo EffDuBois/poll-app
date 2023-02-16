@@ -7,6 +7,7 @@ import {
   complaintListReducer,
 } from "./Reducers/Complaint";
 import { eventListReducer, eventDetailsReducer } from "./Reducers/Event";
+import { pollListReducer } from "./Reducers/Polls";
 
 const rootReducer = combineReducers({
   userLoginReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   complaintListReducer,
   eventListReducer,
   eventDetailsReducer,
+  pollListReducer,
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));
