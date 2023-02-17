@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 
 import { userLoginReducer } from "./Reducers/Login";
 import {
-  complaintFormReducer,
+  postComplaintReducer,
   complaintListReducer,
 } from "./Reducers/Complaint";
 import { eventListReducer, eventDetailsReducer } from "./Reducers/Event";
@@ -11,7 +11,7 @@ import { pollListReducer } from "./Reducers/Polls";
 
 const rootReducer = combineReducers({
   userLoginReducer,
-  complaintFormReducer,
+  postComplaintReducer,
   complaintListReducer,
   eventListReducer,
   eventDetailsReducer,

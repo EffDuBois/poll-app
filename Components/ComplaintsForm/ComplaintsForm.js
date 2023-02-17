@@ -6,41 +6,24 @@ import Hero from "../Util/Hero";
 import InputField from "../Util/InputField";
 import Menu from "../Util/Menu";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-  postComplaint,
-  setComplaintDescription,
-  setComplaintFirstname,
-  setComplaintIssue,
-  setComplaintLocation,
-  setComplaintPhonenumber,
-  setComplaintsLastname,
-} from "../Redux/Actions/Complaint";
+import { useDispatch } from "react-redux";
+import { postComplaint } from "../Redux/Actions/Complaint";
+import { useState } from "react";
 
 export default function HomePage() {
-  const {
-    first_name,
-    last_name,
-    phone_number,
-    issue,
-    picture,
-    location,
-    description,
-  } = useSelector((state) => state.complaintFormReducer);
+  const [ComplaintDetails, setComplaintDetails] = useState({
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    issue: "",
+    location: "",
+    description: "",
+  });
 
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(
-      postComplaint({
-        first_name,
-        last_name,
-        phone_number,
-        issue,
-        location,
-        description,
-      })
-    );
+    dispatch(postComplaint({ ComplaintDetails }));
   };
 
   return (
@@ -54,36 +37,61 @@ export default function HomePage() {
         <ScrollView>
           <InputField
             name={"First Name"}
-            value={first_name}
-            onChangeText={(value) => dispatch(setComplaintFirstname(value))}
+            value={ComplaintDetails.first_name}
+            onChangeText={(value) => {
+              console.log(value);
+              setComplaintDetails((prevState) => {
+                return { ...prevState, first_name: value };
+              });
+            }}
           />
           <InputField
             name={"Last Name"}
-            value={last_name}
-            onChangeText={(value) => dispatch(setComplaintsLastname(value))}
+            value={ComplaintDetails.last_name}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, last_name: value };
+              });
+            }}
           />
           <InputField
             name={"Phone Number"}
-            value={phone_number}
-            onChangeText={(value) => dispatch(setComplaintPhonenumber(value))}
+            value={ComplaintDetails.phone_number}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, phone_number: value };
+              });
+            }}
           />
           <InputField
             name={"Issue"}
-            value={issue}
-            onChangeText={(value) => dispatch(setComplaintIssue(value))}
+            value={ComplaintDetails.issue}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, issue: value };
+              });
+            }}
           />
           <InputField name={"Picture of location"}>
             <RegularButton buttonName={"URL"} style={styles.urlBtn} />
           </InputField>
           <InputField
             name={"Location"}
-            value={location}
-            onChangeText={(value) => dispatch(setComplaintLocation(value))}
+            value={ComplaintDetails.location}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, location: value };
+              });
+            }}
           />
           <InputField
             name={"Description (Optional)"}
-            value={description}
-            onChangeText={(value) => dispatch(setComplaintDescription(value))}
+            value={ComplaintDetails.description}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, description: value };
+              });
+            }}
           />
         </ScrollView>
       </Menu>

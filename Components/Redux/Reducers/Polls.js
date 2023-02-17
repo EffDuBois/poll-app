@@ -14,3 +14,16 @@ export function pollListReducer(state = initialPollListState, action) {
       return state;
   }
 }
+
+
+export function pollAnswerReducer(state = {}, action) {
+  switch (action.type) {
+    case POST_POLL_ANSWER:
+      console.log(action.payload);
+      return {};
+
+    default:
+      console.log(state);
+      return {};
+  }
+}

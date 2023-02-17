@@ -34,10 +34,11 @@ export const getPollList = () => {
           headers: {},
           body: JSON.stringify(answer),
         });
-        console.log(result);
-        if (result) {
+        const json = await result.json()
+        if (json) {
           dispatch({
             type: POST_POLL_ANSWER,
+            payload: json
           });
         } else {
           console.log("Unknown error, No response");
