@@ -6,11 +6,14 @@ import Hero from "../Util/Hero";
 import InputField from "../Util/InputField";
 import Menu from "../Util/Menu";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postComplaint } from "../Redux/Actions/Complaint";
 import { useState } from "react";
 
 export default function HomePage() {
+  const { user_logon } = useSelector((state) => state.userLoginReducer);
+  const user_id = user_logon.user_id;
+  
   const [ComplaintDetails, setComplaintDetails] = useState({
     first_name: "",
     last_name: "",
@@ -23,7 +26,7 @@ export default function HomePage() {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(postComplaint({ ComplaintDetails }));
+    dispatch(postComplaint({ ComplaintDetails, user_id }));
   };
 
   return (
@@ -39,7 +42,6 @@ export default function HomePage() {
             name={"First Name"}
             value={ComplaintDetails.first_name}
             onChangeText={(value) => {
-              console.log(value);
               setComplaintDetails((prevState) => {
                 return { ...prevState, first_name: value };
               });

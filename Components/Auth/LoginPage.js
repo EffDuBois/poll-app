@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 
 import Background from "../Util/Background";
@@ -10,43 +10,69 @@ import RegularButton from "../Util/RegularButton";
 import SelectSignin from "./SelectSignin";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setEmail, setLoginPassword } from "../Redux/Actions/Complaint";
+import { setUserId, checkUserLogon } from "../Redux/Actions/Login";
+import AppText from "../Util/AppText";
 
 export default function LoginPage() {
-  // const [Email, setEmail] = useState("");
+  const [loginDetails, setLoginDetails] = useState({
+    email: "",
+    Password: "",
+  });
 
-  // const [LoginPassword, setLoginPassword] = useState("");
-  const { email, loginPassword } = useSelector(
-    (state) => state.userLoginReducer
-  );
+  const [siginDetails, setSiginDetails] = useState({
+    email: "",
+    Password: "",
+    ConfirmPassword: "",
+  });
+
+  const { user_logon } = useSelector((state) => state.userLoginReducer);
 
   const dispatch = useDispatch();
 
-  const [SigninPassword, setSigninPassword] = useState("");
-  const [ReEnterSigninPassword, setReEnterSigninPassword] = useState("");
+  const [passwordSame, setPasswordSame] = useState(true);
 
-  const PasswordHandler = (password, setFunction) => {
-    setFunction(password);
+  const PasswordChecker = () => {
+    if (siginDetails.Password == "" || siginDetails.ConfirmPassword == "") {
+      setPasswordSame(true);
+      return;
+    }
+    if (siginDetails.Password == siginDetails.ConfirmPassword) {
+      setPasswordSame(true);
+      return;
+    }
+    setPasswordSame(false);
   };
 
-  const validateData = () => {
-    if (!email) {
-      console.log("invalid email", email);
-      Alert.alert("Email Mandatory", "Email field can't be empty");
+  const validateLogin = () => {
+    const alertText = "";
+    if (!loginDetails.email) {
+      alertText.concat("Email field can't be empty");
+    }
+    if (!loginDetails.Password) {
+      alertText.concat("password required");
+    }
+    if (alertText) {
+      Alert.alert("Empty fields", alertText);
+      return false;
+    }
+    dispatch(checkUserLogon(loginDetails));
+    if (!user_logon.logon) {
+      Alert.alert("Wrong credentials", "Email or password incorrect");
       return false;
     }
     return true;
   };
 
+  useEffect(PasswordChecker);
+
   const singinHandler = () => {
-    if (validateData()) {
-      console.log(email);
+    if (validateLogin()) {
       navigation.replace("HomePage");
     }
   };
 
   const signUpHandler = () => {
-    if (validateData) {
+    if (validateSigin()) {
       navigation.replace("HomePage");
     }
   };
@@ -54,29 +80,35 @@ export default function LoginPage() {
   //navigation
   const navigation = useNavigation();
   const [screen, setScreen] = useState(0);
-  const selectScreen = (screen) => {
-    setScreen(screen);
-  };
+  
 
   return (
     <Background>
-      <HeroWithoutBack>Welcome</HeroWithoutBack>
+      <HeroWithoutBack title={"Welcome"} />
       <Menu>
-        <SelectSignin selectScreenFunction={selectScreen} />
+        <SelectSignin selectScreenFunction={setScreen} />
 
         {screen == 0 ? (
           <View>
             <InputField
               name={"Email"}
               placeholder={"Email"}
-              value={email}
-              onChangeText={(value) => dispatch(setEmail(value))}
+              value={loginDetails.email}
+              onChangeText={(value) => {
+                setLoginDetails((prevState) => {
+                  return { ...prevState, email: value };
+                });
+              }}
             />
             <InputField
               name={"Password"}
               placeholder={"Password"}
-              value={loginPassword}
-              onChangeText={(value) => dispatch(setLoginPassword(value))}
+              value={loginDetails.Password}
+              onChangeText={(value) => {
+                setLoginDetails((prevState) => {
+                  return { ...prevState, Password: value };
+                });
+              }}
               secureTextEntry={true}
             />
             <RegularButton buttonName={"Sign In"} onPress={singinHandler} />
@@ -86,27 +118,52 @@ export default function LoginPage() {
             <InputField
               name={"Email"}
               placeholder={"Email"}
-              value={email}
-              onChangeText={(value) => dispatch(setEmail(value))}
+              value={siginDetails.email}
+              onChangeText={(value) => {
+                setSiginDetails((prevState) => {
+                  return { ...prevState, email: value };
+                });
+              }}
+            />
+            <InputField
+              name={"UserID"}
+              placeholder={"UserID"}
+              value={user_logon.user_id}
+              onChangeText={(value) => dispatch(setUserId(value))}
             />
             <InputField
               name={"Password"}
               placeholder={"Password"}
-              value={SigninPassword}
-              onChangeText={(value) =>
-                PasswordHandler(value, setSigninPassword)
-              }
+              value={siginDetails.Password}
+              onChangeText={(value) => {
+                setSiginDetails((prevState) => {
+                  return { ...prevState, Password: value };
+                });
+              }}
               secureTextEntry={true}
             />
             <InputField
               name={"Verify-Password"}
               placeholder={"Verify-Password"}
-              value={ReEnterSigninPassword}
-              onChangeText={(value) =>
-                PasswordHandler(value, setReEnterSigninPassword)
-              }
+              value={siginDetails.ConfirmPassword}
+              onChangeText={(value) => {
+                setSiginDetails((prevState) => {
+                  return { ...prevState, ConfirmPassword: value };
+                });
+              }}
               secureTextEntry={true}
             />
+            {!passwordSame && (
+              <AppText
+                style={{
+                  fontSize: 16,
+                  color: "rgba(255, 0, 0, 1)",
+                  marginLeft: 30,
+                }}
+              >
+                The passwords don't match
+              </AppText>
+            )}
             <RegularButton buttonName={"Sign Up"} onPress={signUpHandler} />
           </View>
         ) : (

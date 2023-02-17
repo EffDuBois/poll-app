@@ -4,16 +4,13 @@ export const GET_COMPLAINT_LIST = "GET_COMPLAINT_LIST";
 
 export const POST_COMPLAINT = "POST_COMPLAINT";
 
-export const getComplaintList = () => {
+export const getComplaintList = (user_id) => {
   return async (dispatch) => {
     try {
-      const result = await fetch(
-        "https://mocki.io/v1/a92809ab-e62f-455d-b4d9-415604921543",
-        {
-          method: "GET",
-          headers: {},
-        }
-      );
+      const result = await fetch(API_URL + "/complaints/" + user_id, {
+        method: "GET",
+        headers: {},
+      });
       const json = await result.json();
       if (json) {
         dispatch({
@@ -29,10 +26,10 @@ export const getComplaintList = () => {
   };
 };
 
-export const postComplaint = (ComplaintDetails) => {
+export const postComplaint = (ComplaintDetails, user_id) => {
   return async (dispatch) => {
     try {
-      const result = await fetch(API_URL + "/complaints/user_id", {
+      const result = await fetch(API_URL + "/complaints/" + user_id, {
         method: "POST",
         headers: {},
         body: JSON.stringify(ComplaintDetails),

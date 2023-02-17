@@ -8,11 +8,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getComplaintList } from "../Redux/Actions/Complaint";
 
 export default function ComplaintsMenu() {
+
+  const { user_logon } = useSelector((state) => state.userLoginReducer);
+  const user_id = user_logon.user_id;
+
   const { complaintList } = useSelector((state) => state.complaintListReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getComplaintList());
+    dispatch(getComplaintList(user_id));
   }, []);
 
   //refreshing state and funciton

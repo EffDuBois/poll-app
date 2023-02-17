@@ -1,16 +1,18 @@
-import { SET_USER_EMAIL, SET_USER_LOGIN_PASSWORD } from "../Actions/Login";
+import { SET_USER_USERID, CHECK_USER_LOGON } from "../Actions/Login";
 
 const initialLoginState = {
-  email: "",
-  loginPassword: "",
+  user_logon: {
+    user_id: "",
+    logon: true,
+  },
 };
 
 export function userLoginReducer(state = initialLoginState, action) {
   switch (action.type) {
-    case SET_USER_EMAIL:
-      return { ...state, email: action.payload };
-    case SET_USER_LOGIN_PASSWORD:
-      return { ...state, loginPassword: action.payload };
+    case SET_USER_USERID:
+      return { ...state, user_logon: { user_id: action.payload } };
+    case CHECK_USER_LOGON:
+      return { ...state, user_logon: action.payload };
     default:
       return state;
   }

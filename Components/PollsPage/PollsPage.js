@@ -17,13 +17,6 @@ import RatingCard from "./RatingCard";
 
 export default function PollsPage() {
 
-
-  const [answer, setanswer] = useState("");
-  const { poll_list } = useSelector((state) => state.pollListReducer);
-  const [answerValue, setanswerValue] = useState()
-
-  const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getPollList());
   }, []);
@@ -35,11 +28,17 @@ export default function PollsPage() {
     setRefreshing(false);
   };
 
-  const answerHandler = (answer) => {
-    setanswer(answer);
-    
-    dispatch(postPollAnswer(answer));
+  const dispatch = useDispatch();
+
+  const [answer, setanswer] = useState("");
+  const { poll_list } = useSelector((state) => state.pollListReducer);
+  const [answerValue, setanswerValue] = useState()
+
+
+  const answerHandler = () => {
+    dispatch(postPollAnswer(answerValue));
   };
+
   return (
     <Background>
       <Hero title={"Polls"} />
