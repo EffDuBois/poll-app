@@ -4,18 +4,11 @@ import QuestionCard from "./QuestionCard";
 
 
 
-export default function SinglelineCard({answerHandler}) {
-
-    const [inputValue, setinputValue] =  useState("");
-
-    const answerHandler = () => {
-        setinputValue(value);
-        answerHandler(inputValue);
-    }
+export default function SinglelineCard({ question, answerValue, setanswerValue, onSubmit}) {
 
     return(
-        <QuestionCard>
-            <InputField value={inputValue} onChangeText={(value)=>{answerHandler(value)}}/>
+        <QuestionCard onSubmit={onSubmit} question={question}>
+            <InputField value={answerValue} onChangeText={(value)=>{setanswerValue(value)}}/>
         </QuestionCard>
     )
 }

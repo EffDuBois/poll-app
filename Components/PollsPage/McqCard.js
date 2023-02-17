@@ -2,14 +2,11 @@ import QuestionCard from "./QuestionCard";
 import RadioArray from "./RadioArray";
 
 
-export default function McqCard({answerHandler}) {
-    const optionSelect = (option) => {
-        answerHandler(option);
-    }
-
+export default function McqCard({question, option_1, option_2, option_3, option_4, setanswerValue, onSubmit}) {
+    
     return(
-        <QuestionCard style={{height: '40%'}}>
-            <RadioArray option_1={true} option_2={true} option_3={true} option_4={true} selectOptionFunction={optionSelect}/>
+        <QuestionCard onSubmit={onSubmit} question={question}>
+            <RadioArray option_1={option_1} option_2={option_2} option_3={option_3} option_4={option_4} selectOptionFunction={setanswerValue}/>
         </QuestionCard>
     )
 }

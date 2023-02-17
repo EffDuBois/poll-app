@@ -1,15 +1,16 @@
 import { GET_POLL_LIST } from "../Actions/Polls";
+import { POST_POLL_ANSWER } from "../Actions/Polls";
 
 const initialPollListState = {
-    pollList: {}
-}
+  poll_list: [],
+};
 
-export function pollListReducer (state= state.initialPollListState, type){
-    switch (action.type) {
-        case GET_POLL_LIST:
-            return{ ...state, pollList: payload};
-    
-        default:
-            return state;
-    }
+export function pollListReducer(state = initialPollListState, action) {
+  switch (action.type) {
+    case GET_POLL_LIST:
+      return { ...state, poll_list: action.payload };
+
+    default:
+      return state;
+  }
 }

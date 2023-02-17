@@ -49,11 +49,15 @@ export default function EventsPage() {
         <SelectArray selectListFunction={listSelector} />
         <FlatList
           refreshControl={
-            <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} onPress={navigation.navigate("EventDetailPage", item.event_id)}/>
+            <RefreshControl refreshing={Refreshing} onRefresh={onRefresh} />
           }
           data={event_list}
           renderItem={({ item }) => (
-            <EventCard key={item.event_name} name={item.event_name} />
+            <EventCard 
+              key={item.event_id} 
+              name={item.event_name} 
+              onPress={navigation.navigate("EventDetailPage", item.event_id)}
+            />
           )}
         />
       </Menu>

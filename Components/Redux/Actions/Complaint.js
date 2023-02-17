@@ -15,7 +15,7 @@ export const POST_COMPLAINT = "POST_COMPLAINT";
 export const getComplaintList = () => {
   return async (dispatch) => {
     try {
-      const result = await fetch(API_URL + "/complaints/5", {
+      const result = await fetch("https://mocki.io/v1/a92809ab-e62f-455d-b4d9-415604921543", {
         method: "GET",
         headers: {},
       });
@@ -26,7 +26,7 @@ export const getComplaintList = () => {
           payload: json,
         });
       } else {
-        console.log("Unable to fetch!");
+        console.log("Unable to fetch!",result);
       }
     } catch (error) {
       console.log(error);
@@ -37,15 +37,14 @@ export const getComplaintList = () => {
 export const postComplaint = (complaintDetails) => {
   return async (dispatch) => {
     try {
-      console.log(complaintDetails);
       const result = await fetch(API_URL + "/complaints/user_id", {
         method: "POST",
         headers: {},
         body: JSON.stringify(complaintDetails),
       });
+      console.log(result);
       dispatch({
         type: POST_COMPLAINT,
-        payload: complaintDetails,
       });
     } catch (error) {
       console.log(error);
