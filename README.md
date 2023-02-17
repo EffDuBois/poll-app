@@ -6,6 +6,4 @@ Frontend
 
 # TODO  
 1.add app execution instructions to this readme
-2.Use background component instead of writing code for all screens
-3.Update the Parameters of the components from props to indvidual parameters
-4. fix password checker behavior
+2. fix password checker behavior

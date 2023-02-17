@@ -1,12 +1,12 @@
 import {  StyleSheet, View } from "react-native";
 import MenuSelection from "./MenuSelection";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
-import Hero from "../Util/Hero";
+import HeroWithoutBack from "../Util/HeroWithoutBack";
 
 export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
-      <Hero style={[styles.heroText]}>Welcome,</Hero>
+      <HeroWithoutBack title={"Welcome,"} style={[styles.heroText]} />
       <View style={[GlobalStyles.menu, styles.menu]}>
         <MenuSelection />
       </View>

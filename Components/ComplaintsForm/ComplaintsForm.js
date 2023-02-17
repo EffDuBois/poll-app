@@ -1,38 +1,98 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
 import AppText from "../Util/AppText";
-import BackButton from "../Util/BackButton";
 import RegularButton from "../Util/RegularButton";
 import Hero from "../Util/Hero";
 import InputField from "../Util/InputField";
 import Menu from "../Util/Menu";
+
+import { useDispatch } from "react-redux";
+import { postComplaint } from "../Redux/Actions/Complaint";
 import { useState } from "react";
 
 export default function HomePage() {
-  const [Details, setDetails] = useState("");
+  const [ComplaintDetails, setComplaintDetails] = useState({
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    issue: "",
+    location: "",
+    description: "",
+  });
+
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
-    return console.log(Details);
+    dispatch(postComplaint({ ComplaintDetails }));
   };
 
   return (
     <View style={GlobalStyles.background}>
-      <Hero>Complaints</Hero>
+      <Hero title={"New Complaint"} />
       <Menu>
         <AppText style={GlobalStyles.headerText}>
           Please fill the following details
         </AppText>
-        <ScrollView >
-          <InputField name={"First Name"} />
-          <InputField name={"Last Name"} />
-          <InputField name={"Phone Number"} />
-          <InputField name={"Issue"} />
+        <RegularButton buttonName={"Submit"} onPress={onSubmit} />
+        <ScrollView>
+          <InputField
+            name={"First Name"}
+            value={ComplaintDetails.first_name}
+            onChangeText={(value) => {
+              console.log(value);
+              setComplaintDetails((prevState) => {
+                return { ...prevState, first_name: value };
+              });
+            }}
+          />
+          <InputField
+            name={"Last Name"}
+            value={ComplaintDetails.last_name}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, last_name: value };
+              });
+            }}
+          />
+          <InputField
+            name={"Phone Number"}
+            value={ComplaintDetails.phone_number}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, phone_number: value };
+              });
+            }}
+          />
+          <InputField
+            name={"Issue"}
+            value={ComplaintDetails.issue}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, issue: value };
+              });
+            }}
+          />
           <InputField name={"Picture of location"}>
             <RegularButton buttonName={"URL"} style={styles.urlBtn} />
           </InputField>
-          <InputField name={"Location"} />
-          <InputField name={"Description (Optional)"} />
-          <RegularButton buttonName={"Submit"} onPress={onSubmit} />
+          <InputField
+            name={"Location"}
+            value={ComplaintDetails.location}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, location: value };
+              });
+            }}
+          />
+          <InputField
+            name={"Description (Optional)"}
+            value={ComplaintDetails.description}
+            onChangeText={(value) => {
+              setComplaintDetails((prevState) => {
+                return { ...prevState, description: value };
+              });
+            }}
+          />
         </ScrollView>
       </Menu>
     </View>

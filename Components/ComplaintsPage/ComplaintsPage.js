@@ -1,12 +1,13 @@
 import { StyleSheet, View } from "react-native";
 import GlobalStyles from "../StyleComponents/GlobalStyles";
+import AddComplaintButton from "../Util/AddComplaintButton";
+import Hero from "../Util/Hero";
 import ComplaintsMenu from "./ComplaintsMenu";
-import ComplaintsPageHero from "./ComplaintsPageHero";
 
 export default function HomePage() {
   return (
     <View style={GlobalStyles.background}>
-      <ComplaintsPageHero/>
+      <Hero title={"Complaints"}><AddComplaintButton/></Hero>
       <View style={styles.background}>
         <ComplaintsMenu />
       </View>

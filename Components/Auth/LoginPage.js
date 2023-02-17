@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { Alert, View } from "react-native";
-import AppText from "../Util/AppText";
+
 import Background from "../Util/Background";
 import HeroWithoutBack from "../Util/HeroWithoutBack";
 import InputField from "../Util/InputField";
@@ -9,43 +9,51 @@ import Menu from "../Util/Menu";
 import RegularButton from "../Util/RegularButton";
 import SelectSignin from "./SelectSignin";
 
-export default function LoginPage() {
-  const [Email, setEmail] = useState("");
+import { useSelector, useDispatch } from "react-redux";
+import { setEmail, setLoginPassword } from "../Redux/Actions/Complaint";
 
-  const [LoginPassword, setLoginPassword] = useState("");
+export default function LoginPage() {
+  // const [Email, setEmail] = useState("");
+
+  // const [LoginPassword, setLoginPassword] = useState("");
+  const { email, loginPassword } = useSelector(
+    (state) => state.userLoginReducer
+  );
+
+  const dispatch = useDispatch();
 
   const [SigninPassword, setSigninPassword] = useState("");
   const [ReEnterSigninPassword, setReEnterSigninPassword] = useState("");
 
-  const [isPasswordSame, setisPasswordSame] = useState(true);
-
-  const PasswordHandler = (text, setPassword) => {
-    setPassword(text);
-    SigninPassword == ReEnterSigninPassword
-      ? setisPasswordSame(True)
-      : setisPasswordSame(false);
-    WarningPrinter;
+  const PasswordHandler = (password, setFunction) => {
+    setFunction(password);
   };
 
-  const WarningPrinter = () => {
-    return isPasswordSame ? null : <AppText>Passwords are not same</AppText>;
+  const validateData = () => {
+    if (!email) {
+      console.log("invalid email", email);
+      Alert.alert("Email Mandatory", "Email field can't be empty");
+      return false;
+    }
+    return true;
   };
-
-  const navigation = useNavigation();
 
   const singinHandler = () => {
-    navigation.replace("HomePage");
+    if (validateData()) {
+      console.log(email);
+      navigation.replace("HomePage");
+    }
   };
 
   const signUpHandler = () => {
-    if (!isPasswordSame) {
-      Alert('Warning:', 'The passwords don\'t match', [{text:'ok' },])
+    if (validateData) {
+      navigation.replace("HomePage");
     }
-    navigation.replace("HomePage");
   };
 
+  //navigation
+  const navigation = useNavigation();
   const [screen, setScreen] = useState(0);
-
   const selectScreen = (screen) => {
     setScreen(screen);
   };
@@ -61,40 +69,41 @@ export default function LoginPage() {
             <InputField
               name={"Email"}
               placeholder={"Email"}
-              value={Email}
-              onChangeText={(text) => setEmail(text)}
+              value={email}
+              onChangeText={(value) => dispatch(setEmail(value))}
             />
             <InputField
               name={"Password"}
               placeholder={"Password"}
-              value={LoginPassword}
-              onChangeText={(text) => setLoginPassword(text)}
+              value={loginPassword}
+              onChangeText={(value) => dispatch(setLoginPassword(value))}
               secureTextEntry={true}
             />
             <RegularButton buttonName={"Sign In"} onPress={singinHandler} />
           </View>
         ) : screen == 1 ? (
           <View>
-            <WarningPrinter />
             <InputField
               name={"Email"}
               placeholder={"Email"}
-              value={Email}
-              onChangeText={(text) => setEmail(text)}
+              value={email}
+              onChangeText={(value) => dispatch(setEmail(value))}
             />
             <InputField
               name={"Password"}
               placeholder={"Password"}
               value={SigninPassword}
-              onChangeText={(text) => PasswordHandler(text, setSigninPassword)}
+              onChangeText={(value) =>
+                PasswordHandler(value, setSigninPassword)
+              }
               secureTextEntry={true}
             />
             <InputField
               name={"Verify-Password"}
               placeholder={"Verify-Password"}
               value={ReEnterSigninPassword}
-              onChangeText={(text) =>
-                PasswordHandler(text, setReEnterSigninPassword)
+              onChangeText={(value) =>
+                PasswordHandler(value, setReEnterSigninPassword)
               }
               secureTextEntry={true}
             />
